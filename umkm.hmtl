@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matcha N3y - Kedai Es Krim Lezat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .cart-bounce { animation: bounce 0.5s ease-in-out; }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-pink-50 text-gray-800">
+
+    <!-- Header / Logo Area -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-green-500 p-2 rounded-full">
+                    <i class="fas fa-ice-cream text-white text-2xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-green-700">Matcha N3y</h1>
+            </div>
+            
+            <button onclick="toggleCart()" class="relative p-2 text-green-700 hover:bg-green-100 rounded-full transition">
+                <i class="fas fa-shopping-cart text-2xl"></i>
+                <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&q=80&w=1200" alt="Banner Es Krim" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative z-20 text-center text-white px-4">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Kesegaran Hakiki di Setiap Gigitan!</h2>
+            <p class="text-lg md:text-xl mb-6">Nikmati varian es krim premium dari Matcha N3y.</p>
+            <a href="#menu" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition transform hover:scale-105 inline-block">Lihat Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center text-green-800 mb-12 italic">Menu Spesial Kami</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <!-- Ice Cream Matcha -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-green-100 hover:shadow-2xl transition group">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505394033343-4316751d4d71?auto=format&fit=crop&q=80&w=500" alt="Matcha" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-xl mb-1">Ice Cream Matcha</h4>
+                    <p class="text-green-600 font-bold mb-4">Rp 15.000</p>
+                    <button onclick="addToCart('Ice Cream Matcha', 15000)" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition">Tambah Keranjang</button>
+                </div>
+            </div>
+
+            <!-- Ice Cream Coklat -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-green-100 hover:shadow-2xl transition group">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&q=80&w=500" alt="Coklat" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-xl mb-1">Ice Cream Coklat</h4>
+                    <p class="text-green-600 font-bold mb-4">Rp 15.000</p> <!-- Harga disesuaikan standar -->
+                    <button onclick="addToCart('Ice Cream Coklat', 15000)" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition">Tambah Keranjang</button>
+                </div>
+            </div>
+
+            <!-- Ice Cream Vanila -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-green-100 hover:shadow-2xl transition group">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&q=80&w=500" alt="Vanila" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-xl mb-1">Ice Cream Vanila</h4>
+                    <p class="text-green-600 font-bold mb-4">Rp 12.000</p>
+                    <button onclick="addToCart('Ice Cream Vanila', 12000)" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition">Tambah Keranjang</button>
+                </div>
+            </div>
+
+            <!-- Ice Cream Mint -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-green-100 hover:shadow-2xl transition group">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=500" alt="Mint" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-xl mb-1">Ice Cream Mint</h4>
+                    <p class="text-green-600 font-bold mb-4">Rp 20.000</p>
+                    <button onclick="addToCart('Ice Cream Mint', 20000)" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition">Tambah Keranjang</button>
+                </div>
+            </div>
+
+            <!-- Ice Cream Anggur -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-green-100 hover:shadow-2xl transition group">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534706936160-d5ee67737249?auto=format&fit=crop&q=80&w=500" alt="Anggur" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-xl mb-1">Ice Cream Anggur</h4>
+                    <p class="text-green-600 font-bold mb-4">Rp 12.000</p>
+                    <button onclick="addToCart('Ice Cream Anggur', 12000)" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition">Tambah Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guest Comments Section -->
+    <section class="bg-green-100 py-16">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h3 class="text-2xl font-bold text-center mb-8">Apa Kata Pelanggan?</h3>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-md mb-8">
+                <form id="commentForm" onsubmit="addComment(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-semibold mb-1">Nama Tamu</label>
+                        <input type="text" id="guestName" required placeholder="Ketik nama Anda..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-semibold mb-1">Komentar</label>
+                        <textarea id="guestText" required placeholder="Tulis ulasan Anda..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 transition">Kirim Ulasan</button>
+                </form>
+            </div>
+
+            <div id="commentList" class="space-y-4">
+                <!-- Komentar akan muncul di sini -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 border-b border-green-800 pb-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Pemilik</h4>
+                    <p>Neyni Khoiriyah</p>
+                    <a href="#" class="text-green-300 hover:underline">Link Web Portofolio</a>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Lokasi</h4>
+                    <p>Sukajati Haurgeulis</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Hubungi Kami</h4>
+                    <p><i class="fab fa-whatsapp"></i> +62 838-6271-4303</p>
+                    <p><i class="far fa-envelope"></i> neynikhoiriyah@gmail.com</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Sosial Media</h4>
+                    <a href="https://instagram.com" target="_blank" class="flex items-center gap-2 text-green-300 hover:text-white transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                        <span>Matcha N3y</span>
+                    </a>
+                </div>
+            </div>
+            <p class="text-center text-sm text-green-400">&copy; 2025 Matcha N3y. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[60] flex flex-col">
+        <div class="p-6 bg-green-600 text-white flex justify-between items-center">
+            <h3 class="text-xl font-bold">Keranjang Anda</h3>
+            <button onclick="toggleCart()" class="text-2xl">&times;</button>
+        </div>
+        <div id="cartItems" class="flex-grow overflow-y-auto p-4 space-y-4">
+            <!-- Item keranjang -->
+        </div>
+        <div class="p-6 border-t">
+            <div class="flex justify-between font-bold text-lg mb-4">
+                <span>Total:</span>
+                <span id="cartTotal">Rp 0</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition">Checkout via WhatsApp</button>
+        </div>
+    </div>
+    <div id="overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 hidden z-50"></div>
+
+    <script>
+        let cart = [];
+        const phoneNumber = "6283862714303";
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            
+            const btn = document.querySelector('#cart-count');
+            btn.classList.add('cart-bounce');
+            setTimeout(() => btn.classList.remove('cart-bounce'), 500);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItems');
+            const countEl = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cartTotal');
+            
+            container.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+                container.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                        <div>
+                            <p class="font-bold">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.quantity} x Rp ${item.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+            });
+
+            countEl.textContent = count;
+            totalEl.textContent = `Rp ${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Keranjang masih kosong!");
+                return;
+            }
+
+            let message = "Halo Matcha N3y! Saya ingin memesan:\n\n";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                total += item.price * item.quantity;
+            });
+            message += `\n*Total Akhir: Rp ${total.toLocaleString()}*`;
+            message += `\n\nAlamat Pengiriman: (Ketik di sini)`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Komentar Logic
+        let comments = [
+            { name: "Andi", text: "Es krim matchanya enak banget, terasa aslinya!" },
+            { name: "Siti", text: "Harga murah, rasa bintang lima." }
+        ];
+
+        function renderComments() {
+            const list = document.getElementById('commentList');
+            list.innerHTML = comments.map(c => `
+                <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
+                    <p class="font-bold text-green-700">${c.name}</p>
+                    <p class="text-gray-600 italic">"${c.text}"</p>
+                </div>
+            `).join('');
+        }
+
+        function addComment(event) {
+            event.preventDefault();
+            const name = document.getElementById('guestName').value;
+            const text = document.getElementById('guestText').value;
+            
+            comments.unshift({ name, text });
+            document.getElementById('commentForm').reset();
+            renderComments();
+        }
+
+        // Initial Load
+        renderComments();
+    </script>
+</body>
+</html>
+
+
